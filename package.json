@@ -11,8 +11,11 @@
   "devDependencies": {
     "@changesets/cli": "^2.16.0",
     "@types/node": "^16",
+    "importly": "^0.2.0",
     "prettier": "2.4.1",
     "shelljs": "^0.8.5",
+    "ts-node": "^10.7.0",
+    "turbo": "^1.1.10",
     "typescript": "^4.6.2",
     "wsrun": "^5.2.2"
   },
