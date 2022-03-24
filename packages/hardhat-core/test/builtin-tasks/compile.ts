@@ -154,7 +154,7 @@ Read about compiler configuration at https://hardhat.org/config
       const compilationJobsCreationErrors = [
         {
           reason:
-            CompilationJobCreationErrorReason.INCOMPATIBLE_OVERRIDEN_SOLC_VERSION,
+            CompilationJobCreationErrorReason.INCOMPATIBLE_OVERRIDDEN_SOLC_VERSION,
           file: Foo,
         },
       ];
@@ -671,7 +671,7 @@ Read about compiler configuration at https://hardhat.org/config
         },
         {
           reason:
-            CompilationJobCreationErrorReason.INCOMPATIBLE_OVERRIDEN_SOLC_VERSION,
+            CompilationJobCreationErrorReason.INCOMPATIBLE_OVERRIDDEN_SOLC_VERSION,
           file: Foo1,
         },
       ];

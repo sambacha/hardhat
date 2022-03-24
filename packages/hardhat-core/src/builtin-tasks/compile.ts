@@ -3,7 +3,7 @@ import chalk from "chalk";
 import { exec } from "child_process";
 import debug from "debug";
 import fsExtra from "fs-extra";
-import path from "path";
+import path from 'node:path';
 import semver from "semver";
 import AggregateError from "aggregate-error";
 
@@ -201,7 +201,7 @@ subtask(TASK_COMPILE_SOLIDITY_GET_DEPENDENCY_GRAPH)
  * returned instead.
  *
  * This is the right task to override to change the compiler configuration.
- * For example, if you want to change the compiler settings when targetting
+ * For example, if you want to change the compiler settings when targeting
  * rinkeby, you could do something like this:
  *
  *   const compilationJob = await runSuper();
@@ -1065,7 +1065,7 @@ subtask(TASK_COMPILE_SOLIDITY_GET_COMPILATION_JOBS_FAILURE_REASONS)
       compilationJobsCreationErrors: CompilationJobCreationError[];
     }): Promise<string> => {
       const noCompatibleSolc: CompilationJobCreationError[] = [];
-      const incompatibleOverridenSolc: CompilationJobCreationError[] = [];
+      const incompatibleOverriddenSolc: CompilationJobCreationError[] = [];
       const directlyImportsIncompatibleFile: CompilationJobCreationError[] = [];
       const indirectlyImportsIncompatibleFile: CompilationJobCreationError[] =
         [];
@@ -1079,9 +1079,9 @@ subtask(TASK_COMPILE_SOLIDITY_GET_COMPILATION_JOBS_FAILURE_REASONS)
           noCompatibleSolc.push(error);
         } else if (
           error.reason ===
-          CompilationJobCreationErrorReason.INCOMPATIBLE_OVERRIDEN_SOLC_VERSION
+          CompilationJobCreationErrorReason.INCOMPATIBLE_OVERRIDDEN_SOLC_VERSION
         ) {
-          incompatibleOverridenSolc.push(error);
+          incompatibleOverriddenSolc.push(error);
         } else if (
           error.reason ===
           CompilationJobCreationErrorReason.DIRECTLY_IMPORTS_INCOMPATIBLE_FILE
@@ -1103,12 +1103,12 @@ subtask(TASK_COMPILE_SOLIDITY_GET_COMPILATION_JOBS_FAILURE_REASONS)
       }
 
       let errorMessage = "";
-      if (incompatibleOverridenSolc.length > 0) {
+      if (incompatibleOverriddenSolc.length > 0) {
         errorMessage += `The compiler version for the following files is fixed through an override in your config file to a version that is incompatible with their Solidity version pragmas.
 
 `;
 
-        for (const error of incompatibleOverridenSolc) {
+        for (const error of incompatibleOverriddenSolc) {
           const { sourceName } = error.file;
           const { versionPragmas } = error.file.content;
           const versionsRange = versionPragmas.join(" ");

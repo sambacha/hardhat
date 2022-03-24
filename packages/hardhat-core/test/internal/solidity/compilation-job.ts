@@ -180,7 +180,7 @@ describe("Compilation jobs", function () {
 
         assert.equal(
           compilationJobCreationError.reason,
-          CompilationJobCreationErrorReason.INCOMPATIBLE_OVERRIDEN_SOLC_VERSION
+          CompilationJobCreationErrorReason.INCOMPATIBLE_OVERRIDDEN_SOLC_VERSION
         );
       });
     });
