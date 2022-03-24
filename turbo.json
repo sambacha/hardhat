@@ -4,7 +4,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".build-test/**"]
+      "outputs": ["internal/**/*", "dist/**/*", ".build-test/**", "tsconfig.tsbuildinfo"]
     },
     "test": {
       "dependsOn": ["^build"],
@@ -18,3 +18,4 @@
     }
   }
 }
+

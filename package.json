@@ -31,5 +31,6 @@
   "dependencies": {},
   "resolutions": {
     "**/antlr4": "4.7.1"
-  }
+  },
+  "packageManager": "yarn@1.22.18"
 }

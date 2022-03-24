@@ -3,8 +3,6 @@
 		"@nomiclabs/common/": "/node_modules/@nomiclabs/common/",
 		"@nomiclabs/eslint-plugin-hardhat-internal-rules/": "/node_modules/@nomiclabs/eslint-plugin-hardhat-internal-rules/",
 		"@nomiclabs/eslint-plugin-hardhat-internal-rules": "/node_modules/@nomiclabs/eslint-plugin-hardhat-internal-rules/index.js",
-		"@nomiclabs/hardhat-docker/": "/node_modules/@nomiclabs/hardhat-docker/",
-		"@nomiclabs/hardhat-docker": "/node_modules/@nomiclabs/hardhat-docker/dist/src/index.js",
 		"@nomiclabs/hardhat-e2e-tests/": "/node_modules/@nomiclabs/hardhat-e2e-tests/",
 		"@nomiclabs/hardhat-ethers/": "/node_modules/@nomiclabs/hardhat-ethers/",
 		"@nomiclabs/hardhat-ethers": "/node_modules/@nomiclabs/hardhat-ethers/internal/index.js",
