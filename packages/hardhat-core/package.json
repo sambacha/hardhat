@@ -4,8 +4,12 @@
   "author": "Nomic Labs LLC",
   "license": "MIT",
   "homepage": "https://hardhat.org",
-  "repository": "github:nomiclabs/hardhat",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nomiclabs/hardha.git"
+  },
   "main": "internal/lib/hardhat-lib.js",
+  "module": "internal/lib/hardhat-lib.js",
   "types": "internal/lib/hardhat-lib.d.ts",
   "description": "Hardhat is an extensible developer tool that helps smart contract developers increase productivity by reliably bringing together the tools they want.",
   "keywords": [
@@ -23,7 +27,7 @@
     "hardhat": "internal/cli/cli.js"
   },
   "engines": {
-    "node": "^12.0.0 || ^14.0.0 || ^16.0.0"
+    "node": "^14.0.0 || ^16.0.0"
   },
   "scripts": {
     "lint": "yarn prettier --check && yarn eslint",
@@ -64,7 +68,7 @@
     "@types/glob": "^7.1.1",
     "@types/lodash": "^4.14.123",
     "@types/mocha": "^9.1.0",
-    "@types/node": "^12.0.0",
+    "@types/node": "^14.0.0",
     "@types/qs": "^6.5.3",
     "@types/resolve": "^1.17.1",
     "@types/semver": "^6.0.2",
@@ -86,8 +90,8 @@
     "rimraf": "^3.0.2",
     "sinon": "^9.0.0",
     "time-require": "^0.1.2",
-    "ts-node": "^8.1.0",
-    "typescript": "~4.5.2"
+    "ts-node": "^10.7.0",
+    "typescript": "~4.6.2"
   },
   "dependencies": {
     "@ethereumjs/block": "^3.6.0",
@@ -118,7 +122,7 @@
     "fp-ts": "1.19.3",
     "fs-extra": "^7.0.1",
     "glob": "^7.1.3",
-    "immutable": "^4.0.0-rc.12",
+    "immutable": "^4.0.0",
     "io-ts": "1.10.4",
     "lodash": "^4.17.11",
     "merkle-patricia-tree": "^4.2.2",

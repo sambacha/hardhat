@@ -3,9 +3,10 @@
   "compilerOptions": {
     "outDir": "./build-test",
     "rootDirs": ["./test"],
+  "isolatedModules": true,
     "composite": true
   },
-  "include": ["./test/**/*.ts"],
+  "include": ["./src/**/*.ts"],
   "exclude": [
     "./test/**/hardhat.config.ts",
     "./node_modules",
