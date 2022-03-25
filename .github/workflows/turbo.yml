@@ -1,16 +1,7 @@
 name: turbo
 
 on:
-  pull_request:
-    branches:
-      - 'release-*'
-      - 'master'
-    tags-ignore:
-      - '*'
-
-concurrency:
-  group: ci-tests-${{ github.ref }}-1
-  cancel-in-progress: true
+  push:
 
 jobs:
   build:
