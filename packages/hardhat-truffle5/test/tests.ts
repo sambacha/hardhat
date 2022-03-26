@@ -2,7 +2,7 @@ import { assert } from "chai";
 import * as fs from "fs";
 import { TASK_COMPILE_SOLIDITY_GET_SOURCE_PATHS } from "hardhat/builtin-tasks/task-names";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
-import path from "path";
+import path from 'node:path';
 
 import { DEFAULT_GAS_MULTIPLIER } from "../src/constants";
 import { TruffleContract, TruffleContractInstance } from "../src/types";
@@ -195,7 +195,7 @@ describe("Test contracts compilation", function () {
 
     assert.include(
       sources,
-      fs.realpathSync(
+      fs.realpathSync.native(
         path.join(process.cwd(), "contracts", "fromContracts.sol")
       )
     );
@@ -206,7 +206,7 @@ describe("Test contracts compilation", function () {
 
     assert.include(
       sources,
-      fs.realpathSync(path.join(process.cwd(), "test", "fromTest.sol"))
+      fs.realpathSync.native(path.join(process.cwd(), "test", "fromTest.sol"))
     );
   });
 
@@ -215,7 +215,7 @@ describe("Test contracts compilation", function () {
 
     assert.notInclude(
       sources,
-      fs.realpathSync(path.join(process.cwd(), "test", "shouldBeIgnored.txt"))
+      fs.realpathSync.native(path.join(process.cwd(), "test", "shouldBeIgnored.txt"))
     );
   });
 

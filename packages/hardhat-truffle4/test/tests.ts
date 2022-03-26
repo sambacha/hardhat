@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import * as fs from "fs";
 import { TASK_COMPILE_SOLIDITY_GET_SOURCE_PATHS } from "hardhat/builtin-tasks/task-names";
-import path from "path";
+import path from 'node:path';
 
 import { TruffleContract, TruffleContractInstance } from "../src/types";
 
@@ -202,14 +202,14 @@ describe("Test contracts compilation", function () {
 
     assert.include(
       sources,
-      fs.realpathSync(path.join("contracts", "fromContracts.sol"))
+      fs.realpathSync.native(path.join("contracts", "fromContracts.sol"))
     );
   });
 
   it("Should include sources from test", async function () {
     const sources = await this.env.run(TASK_COMPILE_SOLIDITY_GET_SOURCE_PATHS);
 
-    assert.include(sources, fs.realpathSync(path.join("test", "fromTest.sol")));
+    assert.include(sources, fs.realpathSync.native(path.join("test", "fromTest.sol")));
   });
 
   it("Should ignore non-source files from test", async function () {
@@ -217,7 +217,7 @@ describe("Test contracts compilation", function () {
 
     assert.notInclude(
       sources,
-      fs.realpathSync(path.join("test", "shouldBeIgnored.txt"))
+      fs.realpathSync.native(path.join("test", "shouldBeIgnored.txt"))
     );
   });
 

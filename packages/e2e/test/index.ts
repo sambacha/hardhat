@@ -2,7 +2,7 @@ import os from "os";
 
 import { assert } from "chai";
 import fsExtra from "fs-extra";
-import path from "path";
+import path from 'node:path';
 import shell from "shelljs";
 
 import { useFixture } from "./helpers";
@@ -59,7 +59,7 @@ describe("e2e tests", function () {
       assert.notMatch(
         stdout,
         /0 passing/,
-        "A test run occured with 0 tests - potential caching issue"
+        "A test run occurred with 0 tests - potential caching issue"
       );
 
       // hh clean
@@ -108,7 +108,7 @@ describe("e2e tests", function () {
   describe("sample projects", function () {
     // These tests generate the sample project and then exercise the commands
     // that are suggested to the user after project generation.  It would be
-    // better if that list of commands were exernalized somewhere, in a place
+    // better if that list of commands were externalized somewhere, in a place
     // from which we could consume them here, so that the lists of commands
     // executed here cannot fall out of sync with what's actually suggested to
     // the user, but this approach was more expedient.

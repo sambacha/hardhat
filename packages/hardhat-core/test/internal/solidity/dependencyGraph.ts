@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import * as fs from "fs";
 import fsExtra from "fs-extra";
-import path from "path";
+import path from 'node:path';
 
 import { DependencyGraph } from "../../../src/internal/solidity/dependencyGraph";
 import { Parser } from "../../../src/internal/solidity/parse";
@@ -56,7 +56,7 @@ describe("Dependency Graph", function () {
     let loop2: ResolvedFile;
 
     before("Mock some resolved files", function () {
-      projectRoot = fs.realpathSync(".");
+      projectRoot = fs.realpathSync.native(".");
 
       fileWithoutDependencies = new ResolvedFile(
         "contracts/WD.sol",

@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import fsExtra from "fs-extra";
-import path from "path";
+import path from 'node:path';
 
 import { DependencyGraph } from "../../../src/internal/solidity/dependencyGraph";
 import { Parser } from "../../../src/internal/solidity/parse";
@@ -10,7 +10,7 @@ import {
 } from "../../../src/internal/solidity/resolver";
 import * as taskTypes from "../../../src/types/builtin-tasks";
 
-const projectRoot = fs.realpathSync(".");
+const projectRoot = fs.realpathSync.native(".");
 
 export class MockFile {
   public readonly sourceName: string;

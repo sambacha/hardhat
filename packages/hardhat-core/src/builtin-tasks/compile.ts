@@ -3,7 +3,7 @@ import chalk from "chalk";
 import { exec } from "child_process";
 import debug from "debug";
 import fsExtra from "fs-extra";
-import path from "path";
+import path from 'node:path';
 import semver from "semver";
 import AggregateError from "aggregate-error";
 
@@ -201,7 +201,7 @@ subtask(TASK_COMPILE_SOLIDITY_GET_DEPENDENCY_GRAPH)
  * returned instead.
  *
  * This is the right task to override to change the compiler configuration.
- * For example, if you want to change the compiler settings when targetting
+ * For example, if you want to change the compiler settings when targeting
  * rinkeby, you could do something like this:
  *
  *   const compilationJob = await runSuper();
@@ -292,7 +292,7 @@ subtask(TASK_COMPILE_SOLIDITY_GET_COMPILATION_JOBS)
  * Receives a list of compilation jobs and returns a new list where some of
  * the compilation jobs might've been removed.
  *
- * This task can be overriden to change the way the cache is used, or to use
+ * This task can be overridden to change the way the cache is used, or to use
  * a different approach to filtering out compilation jobs.
  */
 subtask(TASK_COMPILE_SOLIDITY_FILTER_COMPILATION_JOBS)
@@ -673,7 +673,7 @@ subtask(TASK_COMPILE_SOLIDITY_RUN_SOLC)
  * solc binary or, if that's not possible, using solcjs. Returns the generated
  * output.
  *
- * This task can be overriden to change how solc is obtained or used.
+ * This task can be overridden to change how solc is obtained or used.
  */
 subtask(TASK_COMPILE_SOLIDITY_COMPILE_SOLC)
   .addParam("input", undefined, undefined, types.any)
@@ -905,7 +905,7 @@ subtask(TASK_COMPILE_SOLIDITY_GET_ARTIFACT_FROM_COMPILATION_OUTPUT)
   );
 
 /**
- * Prints a message before running soljs with some input.
+ * Prints a message before running solcjs with some input.
  */
 subtask(TASK_COMPILE_SOLIDITY_LOG_RUN_COMPILER_START)
   .addParam("compilationJob", undefined, undefined, types.any)
@@ -1019,7 +1019,7 @@ subtask(TASK_COMPILE_SOLIDITY_COMPILE_JOB)
  * Receives a list of CompilationJobsFailure and throws an error if it's not
  * empty.
  *
- * This task could be overriden to avoid interrupting the compilation if
+ * This task could be overridden to avoid interrupting the compilation if
  * there's some part of the project that can't be compiled.
  */
 subtask(TASK_COMPILE_SOLIDITY_HANDLE_COMPILATION_JOBS_FAILURES)
@@ -1065,7 +1065,7 @@ subtask(TASK_COMPILE_SOLIDITY_GET_COMPILATION_JOBS_FAILURE_REASONS)
       compilationJobsCreationErrors: CompilationJobCreationError[];
     }): Promise<string> => {
       const noCompatibleSolc: CompilationJobCreationError[] = [];
-      const incompatibleOverridenSolc: CompilationJobCreationError[] = [];
+      const incompatibleOverriddenSolc: CompilationJobCreationError[] = [];
       const directlyImportsIncompatibleFile: CompilationJobCreationError[] = [];
       const indirectlyImportsIncompatibleFile: CompilationJobCreationError[] =
         [];
@@ -1079,9 +1079,9 @@ subtask(TASK_COMPILE_SOLIDITY_GET_COMPILATION_JOBS_FAILURE_REASONS)
           noCompatibleSolc.push(error);
         } else if (
           error.reason ===
-          CompilationJobCreationErrorReason.INCOMPATIBLE_OVERRIDEN_SOLC_VERSION
+          CompilationJobCreationErrorReason.INCOMPATIBLE_OVERRIDDEN_SOLC_VERSION
         ) {
-          incompatibleOverridenSolc.push(error);
+          incompatibleOverriddenSolc.push(error);
         } else if (
           error.reason ===
           CompilationJobCreationErrorReason.DIRECTLY_IMPORTS_INCOMPATIBLE_FILE
@@ -1103,17 +1103,17 @@ subtask(TASK_COMPILE_SOLIDITY_GET_COMPILATION_JOBS_FAILURE_REASONS)
       }
 
       let errorMessage = "";
-      if (incompatibleOverridenSolc.length > 0) {
+      if (incompatibleOverriddenSolc.length > 0) {
         errorMessage += `The compiler version for the following files is fixed through an override in your config file to a version that is incompatible with their Solidity version pragmas.
 
 `;
 
-        for (const error of incompatibleOverridenSolc) {
+        for (const error of incompatibleOverriddenSolc) {
           const { sourceName } = error.file;
           const { versionPragmas } = error.file.content;
           const versionsRange = versionPragmas.join(" ");
 
-          log(`File ${sourceName} has an incompatible overriden compiler`);
+          log(`File ${sourceName} has an incompatible overridden compiler`);
 
           errorMessage += `  * ${sourceName} (${versionsRange})\n`;
         }

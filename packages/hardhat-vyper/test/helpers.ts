@@ -1,6 +1,6 @@
 import { assert, AssertionError } from "chai";
 import * as fsExtra from "fs-extra";
-import path from "path";
+import path from 'node:path';
 
 import { resetHardhatContext } from "hardhat/plugins-testing";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
@@ -45,7 +45,7 @@ function getFixtureProjectPath(projectName: string): string {
     throw new Error(`Fixture project ${projectName} doesn't exist`);
   }
 
-  return fsExtra.realpathSync(projectPath);
+  return fsExtra.realpathSync.native(projectPath);
 }
 
 export function useEnvironment(configPath?: string) {

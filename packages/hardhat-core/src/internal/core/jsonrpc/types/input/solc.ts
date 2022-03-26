@@ -3,8 +3,8 @@ import * as t from "io-ts";
 export const rpcCompilerInput = t.type(
   {
     language: t.string,
-    sources: t.any,
-    settings: t.any,
+    sources: t.unknown,
+    settings: t.unknown,
   },
   "RpcCompilerInput"
 );
@@ -13,8 +13,8 @@ export type RpcCompilerInput = t.TypeOf<typeof rpcCompilerInput>;
 
 export const rpcCompilerOutput = t.type(
   {
-    sources: t.any,
-    contracts: t.any,
+    sources: t.unknown,
+    contracts: t.unknown,
   },
   "RpcCompilerOutput"
 );

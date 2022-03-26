@@ -1,6 +1,6 @@
 import fsExtra from "fs-extra";
 import * as os from "os";
-import path from "path";
+import path from 'node:path';
 
 declare module "mocha" {
   interface Context {
@@ -8,8 +8,10 @@ declare module "mocha" {
   }
 }
 
+
 async function getEmptyTmpDir(nameHint: string) {
   const tmpDirContainer = os.tmpdir();
+  // TODO: fs.mkdtempSync(path.join(os.tmpdir(), `hardhat-tests-${nameHint}`));
   const tmpDir = path.join(tmpDirContainer, `hardhat-tests-${nameHint}`);
   await fsExtra.ensureDir(tmpDir);
   await fsExtra.emptyDir(tmpDir);

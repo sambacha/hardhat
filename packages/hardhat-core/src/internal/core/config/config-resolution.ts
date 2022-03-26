@@ -1,7 +1,7 @@
 import { BN } from "ethereumjs-util";
 import * as fs from "fs";
 import cloneDeep from "lodash/cloneDeep";
-import path from "path";
+import path from 'node:path';
 
 import {
   HardhatConfig,
@@ -426,7 +426,7 @@ export function resolveProjectPaths(
   userConfigPath: string,
   userPaths: ProjectPathsUserConfig = {}
 ): ProjectPathsConfig {
-  const configFile = fs.realpathSync(userConfigPath);
+  const configFile = fs.realpathSync.native(userConfigPath);
   const configDir = path.dirname(configFile);
 
   const root = resolvePathFrom(configDir, "", userPaths.root);
