@@ -1,0 +1,39 @@
+name: turbo
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: ['14.x']
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - run: yarn install
+        id: install
+
+      - run: npm i -g lerna
+        id: lerna
+
+      - run: npx turbo run build
+        id: turbo
+
+      - run: lerna exec npm pack
+        id: pack
+
+      - run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - uses: 'marvinpinto/action-automatic-releases@latest'
+        with:
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
+          automatic_release_tag: 'latest'
+          prerelease: true
+          files: |
+            packages/**/*.tgz
+        id: 'automatic_releases'
