@@ -4,7 +4,11 @@
   "author": "Nomic Labs LLC",
   "license": "SEE LICENSE IN EACH PACKAGE'S LICENSE FILE",
   "private": true,
-  "workspaces": [
+  "resolutions": {
+    "@types/node": "~14",
+    "@types/bn.js": "^5.1.0"
+},
+"workspaces": [
     "packages/*",
     "docs"
   ],

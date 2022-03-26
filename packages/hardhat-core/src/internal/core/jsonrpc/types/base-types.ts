@@ -1,5 +1,6 @@
-import { BN, bufferToHex, isValidAddress, toBuffer } from "ethereumjs-util";
+import { bufferToHex, isValidAddress, toBuffer } from "ethereumjs-util";
 import * as t from "io-ts";
+import BN from "bn.js";
 
 import { assertHardhatInvariant, HardhatError } from "../../errors";
 import { ERRORS } from "../../errors-list";
